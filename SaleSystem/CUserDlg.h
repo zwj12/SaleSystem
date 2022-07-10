@@ -33,6 +33,9 @@ private:
 	CString m_name;
 	CString m_newpassword;
 	CString m_makesurepassword;
+public:
+	virtual void OnInitialUpdate();
+	afx_msg void OnBnClickedButton1();
 };
 
 

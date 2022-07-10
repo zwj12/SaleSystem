@@ -184,6 +184,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CDispalyView.h" />
+    <ClInclude Include="CInfoFile.h" />
+    <ClInclude Include="CLoginDlg.h" />
+    <ClInclude Include="CSaleDlg.h" />
     <ClInclude Include="CSelectView.h" />
     <ClInclude Include="CUserDlg.h" />
     <ClInclude Include="framework.h" />
@@ -197,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CDispalyView.cpp" />
+    <ClCompile Include="CInfoFile.cpp" />
+    <ClCompile Include="CLoginDlg.cpp" />
+    <ClCompile Include="CSaleDlg.cpp" />
     <ClCompile Include="CSelectView.cpp" />
     <ClCompile Include="CUserDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />

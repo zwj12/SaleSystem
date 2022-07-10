@@ -79,6 +79,9 @@ void CSelectView::OnTvnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
 	{
 		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), NM_A, (WPARAM)NM_A, (LPARAM)0);
 	}
+	else if (str == TEXT("销售管理")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), NM_B, (WPARAM)NM_B, (LPARAM)0);
+	}
 
 	*pResult = 0;
 }

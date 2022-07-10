@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "SaleSystem.h"
 #include "MainFrm.h"
+#include "CLoginDlg.h"
 
 #include "SaleSystemDoc.h"
 #include "SaleSystemView.h"
@@ -69,6 +70,9 @@ BOOL CSaleSystemApp::InitInstance()
 	// in your application.
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
+
+	CLoginDlg dlg;
+	dlg.DoModal();
 
 	CWinApp::InitInstance();
 

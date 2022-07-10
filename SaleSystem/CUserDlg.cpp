@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "SaleSystem.h"
 #include "CUserDlg.h"
-
+#include "CInfoFile.h"
 
 // CUserDlg
 
@@ -34,6 +34,7 @@ void CUserDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CUserDlg, CFormView)
+	ON_BN_CLICKED(IDC_BUTTON1, &CUserDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -55,3 +56,47 @@ void CUserDlg::Dump(CDumpContext& dc) const
 
 
 // CUserDlg message handlers
+
+
+void CUserDlg::OnInitialUpdate()
+{
+	CFormView::OnInitialUpdate();
+
+	// TODO: Add your specialized code here and/or call the base class
+
+	m_user =TEXT("销售员");
+	CInfoFile file;
+	CString pw;
+	file.ReadLogin( m_name,  pw);
+	UpdateData(false);
+
+
+}
+
+
+void CUserDlg::OnBnClickedButton1()
+{
+	// TODO: Add your control notification handler code here
+
+	UpdateData(true);
+
+	if (m_newpassword.IsEmpty()) {
+		MessageBox(TEXT("新密码不能为空"));
+		return;
+	}
+
+	if (m_newpassword != m_makesurepassword) {
+		MessageBox(TEXT("新密码不一致"));
+		return;
+	}
+
+	CInfoFile file;
+	CStringA usname( m_name);
+	CStringA password ( m_newpassword);
+
+	file.WritePwd(usname.GetBuffer(), password.GetBuffer());
+
+	CString str(TEXT("Hello World"));
+	CStringA strA(str);
+	char* strC = strA.GetBuffer();
+}

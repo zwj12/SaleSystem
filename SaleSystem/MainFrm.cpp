@@ -10,6 +10,8 @@
 #include "CSelectView.h"
 #include "CDispalyView.h"
 #include "CUserDlg.h"
+#include "CInfoFile.h"
+#include "CSaleDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -69,6 +71,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	MoveWindow(0, 0, 800, 500);
 	CenterWindow();
 
+	//CInfoFile file;
+	//CString name;
+	//CString pwd;
+
+	//file.ReadLogin(name, pwd);
+
+	//MessageBox(name);
+	//MessageBox(pwd);
+
+	//file.WritePwd("weijin", "56789");
+
 	return 0;
 }
 
@@ -119,6 +132,26 @@ LRESULT CMainFrame::OnMyChange(WPARAM wParam, LPARAM lParam)
 	if (wParam == NM_A)
 	{
 		Context.m_pNewViewClass = RUNTIME_CLASS(CUserDlg);
+		Context.m_pCurrentFrame = this;
+		Context.m_pLastView = (CFormView*)this->m_splitter.GetPane(0, 1);
+		m_splitter.DeleteView(0, 1);
+		m_splitter.CreateView(0,1, RUNTIME_CLASS(CUserDlg),CSize(600,500), &Context);
+		CUserDlg* pNewView = (CUserDlg*)m_splitter.GetPane(0,1);
+		m_splitter.RecalcLayout();
+		pNewView->OnInitialUpdate();
+		m_splitter.SetActivePane(0, 1);
+
+	}
+	else if (wParam == NM_B) {
+		Context.m_pNewViewClass = RUNTIME_CLASS(CSaleDlg);
+		Context.m_pCurrentFrame = this;
+		Context.m_pLastView = (CFormView*)this->m_splitter.GetPane(0, 1);
+		m_splitter.DeleteView(0, 1);
+		m_splitter.CreateView(0, 1, RUNTIME_CLASS(CSaleDlg), CSize(600, 500), &Context);
+		CSaleDlg* pNewView = (CSaleDlg*)m_splitter.GetPane(0, 1);
+		m_splitter.RecalcLayout();
+		pNewView->OnInitialUpdate();
+		m_splitter.SetActivePane(0, 1);
 	}
 	return 0;
 }
