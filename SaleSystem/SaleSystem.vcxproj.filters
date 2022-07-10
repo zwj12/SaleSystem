@@ -74,5 +74,17 @@
     <Image Include="res\SaleSystem.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\3.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\4.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
