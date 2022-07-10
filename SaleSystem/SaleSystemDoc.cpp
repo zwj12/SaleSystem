@@ -46,6 +46,8 @@ BOOL CSaleSystemDoc::OnNewDocument()
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
 
+	SetTitle(TEXT("Document 1"));
+
 	return TRUE;
 }
 

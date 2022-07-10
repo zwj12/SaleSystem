@@ -7,6 +7,9 @@
 #include "SaleSystem.h"
 
 #include "MainFrm.h"
+#include "CSelectView.h"
+#include "CDispalyView.h"
+#include "CUserDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -18,6 +21,13 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
+
+	ON_MESSAGE(NM_A, OnMyChange)
+	ON_MESSAGE(NM_B, OnMyChange)
+	ON_MESSAGE(NM_C, OnMyChange)
+	ON_MESSAGE(NM_D, OnMyChange)
+	ON_MESSAGE(NM_E, OnMyChange)
+
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -51,6 +61,14 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
+	//SetClassLong(this->m_hWnd, GCL_HICON, (LONG)AfxGetApp()->LoadIconW(IDI_ICON_WIN));
+
+	SetClassLongPtr(this->m_hWnd, GCLP_HICON, (LONG)AfxGetApp()->LoadIconW(IDI_ICON_WIN));
+	SetTitle(TEXT("销售管理系统"));
+
+	MoveWindow(0, 0, 800, 500);
+	CenterWindow();
+
 	return 0;
 }
 
@@ -81,3 +99,26 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame message handlers
 
+
+
+BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
+{
+	// TODO: Add your specialized code here and/or call the base class
+
+	m_splitter.CreateStatic(this, 1, 2);
+	m_splitter.CreateView(0, 0, RUNTIME_CLASS(CSelectView), CSize(200, 500), pContext);
+	m_splitter.CreateView(0, 1, RUNTIME_CLASS(CDispalyView), CSize(600, 500), pContext);
+
+	return true;
+	//return CFrameWnd::OnCreateClient(lpcs, pContext);
+}
+
+LRESULT CMainFrame::OnMyChange(WPARAM wParam, LPARAM lParam)
+{
+	CCreateContext Context;
+	if (wParam == NM_A)
+	{
+		Context.m_pNewViewClass = RUNTIME_CLASS(CUserDlg);
+	}
+	return 0;
+}

@@ -39,6 +39,15 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CSelectView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispalyView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CUserDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SaleSystem.cpp">
@@ -54,6 +63,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CSelectView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CDispalyView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CUserDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
